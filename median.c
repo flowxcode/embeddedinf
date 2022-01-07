@@ -6,18 +6,23 @@
 // 3 calculate the median
 
 // read numbers
-void read_numbers(const char* file_name)
+int * read_numbers(const char* file_name)
 {
-  FILE* file = fopen (file_name, "r");
-  int i = 0;
+    static int numbers[10];
 
-  fscanf (file, "%d", &i);    
-  while (!feof (file))
+    FILE* file = fopen (file_name, "r");
+    int i = 0;
+
+    fscanf (file, "%d", &i);    
+    while (!feof (file))
     {  
-      printf ("%d ", i);
-      fscanf (file, "%d", &i);      
+        printf ("%d \n", i);
+        fscanf (file, "%d", &i);      
     }
-  fclose (file);        
+    fclose (file);
+    printf("reading done!\n");
+
+    return numbers;
 }
 
 // sort an array in ascending order
@@ -59,32 +64,37 @@ float calc_median(int numbers[], int n)
 
 int main()
 {
+    int i, j;
+
+    // read from file
+    int *file_numbers = read_numbers("numbers.txt");    
+    for (j = 0; j < 10; j++) {
+        printf("%i\n", file_numbers[j]);
+    }
+
     // test numbers for quick ramp up
+    // output median should be 5.5
     int numbers_arr[10] = { 3, 2, 1, 4, 5, 6, 7, 9, 8, 10 };
 
-    int i;
     int len = (sizeof (numbers_arr) / sizeof (numbers_arr[0]));
     printf("len: %d\n", len);
-    for (i = 0; i < (sizeof (numbers_arr) / sizeof (numbers_arr[0])); i++) {
+    for (i = 0; i < len; i++) {
         printf("%i\n", numbers_arr[i]);
     }
     
     int n = 0;
     float median = 0;
-
-    // TODO read from file
-
     
     // sort
     sort_array(numbers_arr , len);
     printf("print sorted array:\n");
-    for (i = 0; i < (sizeof (numbers_arr) / sizeof (numbers_arr[0])); i++) {
+    for (i = 0; i < len; i++) {
         printf("%i\n", numbers_arr[i]);
     }
     
     // calc median
     median = calc_median(numbers_arr , len);        
-    printf("median : %f\n", median);
+    printf("median : %.2f\n", median);
 
     return 0;
 }

@@ -28,37 +28,44 @@ void sort_array(int *array , int n)
 }
 
 // calculate median from array
-float calc_median(int array[] , int n)
+float calc_median(int numbers[], int n)
 {
     float median = 0;
 
-    printf(sizeof(*array));
+    //int len = (sizeof (numbers) / sizeof (numbers[0]));
+    printf("len: %d\n", n);
 
     // numbers are even
     if(n%2 == 0)
-        median = (array[(n-1) / 2] + array[n / 2]) / 2.0;
+        median = (numbers[(n-1) / 2] + numbers[n / 2]) / 2.0;
     // numbers are odd
     else
-        median = array[n / 2];
+        median = numbers[n / 2];
     
     return median;
 }
 
 int main()
 {
-    int numbers_arr[10] = {0};
-    numbers_arr[0] = 3;
-    numbers_arr[1] = 2;
-    numbers_arr[2] = 1;
-    numbers_arr[3] = 4;
-    numbers_arr[4] = 5;
-    numbers_arr[5] = 6;
-    numbers_arr[6] = 7;
-    numbers_arr[7] = 9;
-    numbers_arr[8] = 8;
-    numbers_arr[9] = 10;
-    
+    int numbers_arr[10] = { 3, 2, 1, 4, 5, 6, 7, 9, 8, 10 };
+    // numbers_arr[0] = 3;
+    // numbers_arr[1] = 2;
+    // numbers_arr[2] = 1;
+    // numbers_arr[3] = 4;
+    // numbers_arr[4] = 5;
+    // numbers_arr[5] = 6;
+    // numbers_arr[6] = 7;
+    // numbers_arr[7] = 9;
+    // numbers_arr[8] = 8;
+    // numbers_arr[9] = 10;
 
+    int i;
+    int len = (sizeof (numbers_arr) / sizeof (numbers_arr[0]));
+    printf("len: %d\n", len);
+    for (i = 0; i < (sizeof (numbers_arr) / sizeof (numbers_arr[0])); i++) {
+        printf("%i\n", numbers_arr[i]);
+    }
+    
     int n = 0;
     float median = 0;
 
@@ -68,9 +75,11 @@ int main()
     // sort
     sort_array(numbers_arr , n);
     
-    median = calc_median(numbers_arr , n);
+    median = calc_median(numbers_arr , len);
         
     printf("median : %f\n", median);
 
     return 0;
 }
+
+

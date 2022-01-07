@@ -31,15 +31,34 @@ void sort_array(int *array , int n)
 float calc_median(int array[] , int n)
 {
     float median = 0;
-    
-    // TODO
+
+    printf(sizeof(*array));
+
+    // numbers are even
+    if(n%2 == 0)
+        median = (array[(n-1) / 2] + array[n / 2]) / 2.0;
+    // numbers are odd
+    else
+        median = array[n / 2];
     
     return median;
 }
 
 int main()
 {
-    int numbers[10] = {0};
+    int numbers_arr[10] = {0};
+    numbers_arr[0] = 3;
+    numbers_arr[1] = 2;
+    numbers_arr[2] = 1;
+    numbers_arr[3] = 4;
+    numbers_arr[4] = 5;
+    numbers_arr[5] = 6;
+    numbers_arr[6] = 7;
+    numbers_arr[7] = 9;
+    numbers_arr[8] = 8;
+    numbers_arr[9] = 10;
+    
+
     int n = 0;
     float median = 0;
 
@@ -47,11 +66,11 @@ int main()
 
     
     // sort
-    sort_array(numbers , n);
+    sort_array(numbers_arr , n);
     
-    median = calc_median(numbers , n);
+    median = calc_median(numbers_arr , n);
         
     printf("median : %f\n", median);
-    
+
     return 0;
 }

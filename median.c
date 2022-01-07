@@ -59,17 +59,8 @@ float calc_median(int numbers[], int n)
 
 int main()
 {
+    // test numbers for quick ramp up
     int numbers_arr[10] = { 3, 2, 1, 4, 5, 6, 7, 9, 8, 10 };
-    // numbers_arr[0] = 3;
-    // numbers_arr[1] = 2;
-    // numbers_arr[2] = 1;
-    // numbers_arr[3] = 4;
-    // numbers_arr[4] = 5;
-    // numbers_arr[5] = 6;
-    // numbers_arr[6] = 7;
-    // numbers_arr[7] = 9;
-    // numbers_arr[8] = 8;
-    // numbers_arr[9] = 10;
 
     int i;
     int len = (sizeof (numbers_arr) / sizeof (numbers_arr[0]));
@@ -91,8 +82,8 @@ int main()
         printf("%i\n", numbers_arr[i]);
     }
     
-    median = calc_median(numbers_arr , len);
-        
+    // calc median
+    median = calc_median(numbers_arr , len);        
     printf("median : %f\n", median);
 
     return 0;

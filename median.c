@@ -23,8 +23,21 @@ void read_numbers(const char* file_name)
 // sort an array in ascending order
 void sort_array(int *array , int n)
 { 
-    // sort algo TODO
+    // sort algo
+    int i = 0, j = 0, temp = 0;
 
+    for(i = 0; i < n; i++)
+    {
+        for(j = 0; j < n-1; j++)
+        {
+            if(array[j] > array[j+1])
+            {
+                temp        = array[j];
+                array[j]    = array[j+1];
+                array[j+1]  = temp;
+            }
+        }
+    }
 }
 
 // calculate median from array
@@ -32,8 +45,7 @@ float calc_median(int numbers[], int n)
 {
     float median = 0;
 
-    //int len = (sizeof (numbers) / sizeof (numbers[0]));
-    printf("len: %d\n", n);
+    //printf("len: %d\n", n);
 
     // numbers are even
     if(n%2 == 0)
@@ -73,7 +85,11 @@ int main()
 
     
     // sort
-    sort_array(numbers_arr , n);
+    sort_array(numbers_arr , len);
+    printf("print sorted array:\n");
+    for (i = 0; i < (sizeof (numbers_arr) / sizeof (numbers_arr[0])); i++) {
+        printf("%i\n", numbers_arr[i]);
+    }
     
     median = calc_median(numbers_arr , len);
         
